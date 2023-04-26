@@ -3,8 +3,20 @@ export default function Text({ style, styles, classNames, children, ...extras })
     let options = [
         { 
             title: 'main', 
-            classNames: 'whitespace-nowrap font-main text-xl text-primary-900 dark:text-primary-50'
-        }
+            classNames: 'font-main text-xl md:text-4xl text-center text-reverse dark:text-base-0'
+        },
+        { 
+            title: 'mainButton', 
+            classNames: 'font-main text-4xl md:text-4xl text-reverse-0'
+        },
+        { 
+            title: 'title', 
+            classNames: 'font-bold text-7xl md:text-8xl text-center text-reverse dark:text-base-0'
+        },
+        { 
+            title: 'logo', 
+            classNames: 'whitespace-nowrap font-main text-3xl text-reverse dark:text-base-0'
+        },
     ]
 
     /* getOption

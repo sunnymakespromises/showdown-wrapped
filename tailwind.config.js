@@ -11,60 +11,39 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                main: ['"Lato"', ...defaultTheme.fontFamily.sans],
+                'main-thin': ['var(--font-main-thin)', ...defaultTheme.fontFamily.sans],
+                'main-thin-italic': ['var(--font-main-thin-italic)', ...defaultTheme.fontFamily.sans],
+                'main-extra-light': ['var(--font-main-extra-light)', ...defaultTheme.fontFamily.sans],
+                'main-extra-light-italic': ['var(--font-main-extra-light-italic)', ...defaultTheme.fontFamily.sans],
+                'main-light': ['var(--font-main-light)', ...defaultTheme.fontFamily.sans],
+                'main-light-italic': ['var(--font-main-light-italic)', ...defaultTheme.fontFamily.sans],
+                'main-regular': ['var(--font-main-regular)', ...defaultTheme.fontFamily.sans],
+                'main-regular-italic': ['var(--font-main-regular-italic)', ...defaultTheme.fontFamily.sans],
+                'main': ['var(--font-main)', ...defaultTheme.fontFamily.sans],
+                'main-italic': ['var(--font-main-italic)', ...defaultTheme.fontFamily.sans],
+                'main-bold': ['var(--font-main-bold)', ...defaultTheme.fontFamily.sans],
+                'main-bold-italic': ['var(--font-main-bold-italic)', ...defaultTheme.fontFamily.sans],
+                'main-black': ['var(--font-main-black)', ...defaultTheme.fontFamily.sans],
+                'main-black-italic': ['var(--font-main-black-italic)', ...defaultTheme.fontFamily.sans]
             },
             colors: {
                 transparent: 'transparent',
-                black: '#000',
-                white: '#fff',
+                base: {
+                    0: '#fffdf7',
+                    100: '#fffaeb'
+                },
+                reverse: {
+                    0: '#202020',
+                    100: '#141414'
+                },
                 primary: {
-                    50: "#f9f9f9",
-                    100: "#f3f3f3",
-                    200: "#eaeaea",
-                    300: "#dadada",
-                    400: "#b7b7b7",
-                    500: "#979797",
-                    600: "#6e6e6e",
-                    700: "#5b5b5b",
-                    800: "#3c3c3c",
-                    900: "#1c1c1c"
+                    0: '#fdd85d',
+                    100: '#fdc921'
                 },
                 secondary: {
-                    50: "#f9f9f9",
-                    100: "#f3f3f3",
-                    200: "#eaeaea",
-                    300: "#dadada",
-                    400: "#b7b7b7",
-                    500: "#979797",
-                    600: "#6e6e6e",
-                    700: "#5b5b5b",
-                    800: "#3c3c3c",
-                    900: "#1c1c1c"
-                },
-                accent: {
-                    50: "#fff1f2",
-                    100: "#ffe4e6",
-                    200: "#fecdd3",
-                    300: "#fda4af",
-                    400: "#fb7185",
-                    500: "#f43f5e",
-                    600: "#e11d48",
-                    700: "#be123c",
-                    800: "#9f1239",
-                    900: "#881337"
-                },
-                tertiary: {
-                    50: "#eff6ff",
-                    100: "#dbeafe",
-                    200: "#bfdbfe",
-                    300: "#93c5fd",
-                    400: "#60a5fa",
-                    500: "#3b82f6",
-                    600: "#2563eb",
-                    700: "#1d4ed8",
-                    800: "#1e40af",
-                    900: "#1e3a8a"
-                },
+                    0: '#99d6ea',
+                    100: '#6798c0'
+                }
             }
         },
     },
