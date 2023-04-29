@@ -3,10 +3,12 @@
 'use client'
 
 import Button from './button'
+import { useHomeContext } from '../contexts/home'
 import { useEffect, useState } from 'react'
 
 /* /components/actionIcon.js */
 export default function ActionIcon({fn, Icon, color}) {
+    const { isLoggedIn } = useHomeContext()
     const [animated, setAnimated] = useState()
     const animations = {
         original: 'translate-x-2',
@@ -16,16 +18,18 @@ export default function ActionIcon({fn, Icon, color}) {
 
     useEffect(() => {
         setAnimated(animations.original)
-        const timer = setTimeout(() => {
-            setAnimated(animations.new)
-        }, 2000)
-        return () => clearTimeout(timer)
-    }, [])
+        if (isLoggedIn) {
+            const timer = setTimeout(() => {
+                setAnimated(animations.new)
+            }, 2000)
+            return () => clearTimeout(timer)
+        }
+    }, [isLoggedIn])
 
     const colors = 'bg-' + color + '-0 hover:bg-' + color + '-100'
 
     return (
-        <Button style = 'actionIcon' classNames = {'right-0 w-min ' + animated + ' ' + animations.hover + ' ' + colors} onClick = {() => fn()}>
+        <Button style = 'actionIcon' classNames = {(isLoggedIn ? '' : 'translate-x-[100%]') + ' w-min ' + animated + ' ' + (isLoggedIn ? animations.hover : '') + ' ' + colors} onClick = {isLoggedIn ? () => fn() : () => {}}>
             <Icon size = {36}/>
         </Button>
     )

@@ -26,7 +26,7 @@ export default function Home() {
                         speed={80}
                     />
                 </Text>
-                {isLoggedIn ? <ActionBar/> : null}
+                <ActionBar/>
                 {body}
             </div>
         </div>
