@@ -42,7 +42,15 @@ module.exports = {
                 },
                 secondary: {
                     0: '#99d6ea',
-                    100: '#6798c0'
+                    100: '#78C8E3'
+                },
+                tertiary: {
+                    0: '#F14156',
+                    100: '#EE1B34'
+                },
+                quarternary: {
+                    0: '#80ed99',
+                    100: '#5EE87E'
                 }
             }
         },

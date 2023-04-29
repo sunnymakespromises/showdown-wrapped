@@ -27,7 +27,12 @@ export default function Button({ text, style, styles, isListener, classNames, on
     let options = [
         {
             title: 'main',
-            classNames: 'transition ease-in-out bg-primary-100 hover:bg-primary-0 dark:bg-secondary-100 dark:hover:bg-secondary-0 hover:scale-105 rounded-full px-6 py-2',
+            classNames: 'transition-all ease-in-out bg-secondary-0 hover:bg-secondary-100 dark:bg-tertiary-0 dark:hover:bg-tertiary-100 hover:scale-105 rounded-full px-6 py-2 shadow-sm',
+            textClassNames: ''
+        },
+        {
+            title: 'actionIcon',
+            classNames: 'transition-all ease-in-out rounded-3xl !rounded-r-none pr-4 p-2 pl-6 shadow-sm',
             textClassNames: ''
         },
     ]
