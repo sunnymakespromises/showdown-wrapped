@@ -46,9 +46,9 @@ module.exports = {
                 },
                 tertiary: {
                     0: '#F14156',
-                    100: '#EE1B34'
+                    100: '#EF233C'
                 },
-                quarternary: {
+                quaternary: {
                     0: '#80ed99',
                     100: '#5EE87E'
                 }
