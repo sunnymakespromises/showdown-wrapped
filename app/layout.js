@@ -19,6 +19,7 @@ export default function HomeLayout({ children }) {
         username: '',
         password: ''
     })
+    const [replays, setReplays] = useState([])
     const [isLoggedIn, setIsLoggedIn] = useState(null)
     const { getItem, setItem, removeItem } = useStorage() // Utilities for dealing with localStorage
     const [statuses, setStatuses] = useState({ // Information about different processes throughout the site
@@ -50,6 +51,15 @@ export default function HomeLayout({ children }) {
             checkLogin()
         }
     }, [connection])
+
+    /**
+     * Runs after the user gets logged in.
+     */
+    useEffect(() => {
+        if (isLoggedIn) {
+            getReplays()
+        }
+    }, [isLoggedIn])
 
     const context = { currentUser, isLoggedIn, onLogout, onLogin, statuses }
 
@@ -149,6 +159,29 @@ export default function HomeLayout({ children }) {
             removeItem('currentuser') // Removes the key 'currentuser' from localStorage
             setIsLoggedIn(false)
         }
+    }
+
+    /**
+     * Gets the replay data of the currently logged in user.
+     */
+    async function getReplays() {
+        const listOfReplays = []
+        const publicReplaysData = JSON.parse(await (await fetch(BYPASS_CORS + 'https://replay.pokemonshowdown.com/search.json?user=' + currentUser.username)).text())
+        const privateReplaysData = JSON.parse(await (await fetch(BYPASS_CORS + 'https://replay.pokemonshowdown.com/search.json?user=' + currentUser.username + '&private')).text())
+        console.log(privateReplaysData)
+        const allReplaysData = publicReplaysData
+        await allReplaysData.map(async (replay) => {
+            const replayData = JSON.parse(await (await fetch(BYPASS_CORS + 'https://replay.pokemonshowdown.com/' + replay.id + '.json')).text())
+            listOfReplays.push({
+                id: replayData.id,
+                format: replayData.format,
+                opponent: replayData.p1id === currentUser.username ? replayData.p2id : replayData.p1id,
+                datetime: new Date(replayData.uploadtime),
+                log: replayData.log
+            })
+        })
+        console.log(listOfReplays)
+        setReplays(listOfReplays)
     }
     
     

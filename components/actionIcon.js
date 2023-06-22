@@ -8,7 +8,7 @@ import { useBreakpoints } from '../hooks/useBreakpoints'
 import { useEffect, useState } from 'react'
 
 /* /components/actionIcon.js */
-export default function ActionIcon({fn, Icon, color}) {
+export default function ActionIcon({fn, Icon, color, isHovered}) {
     const { isLoggedIn } = useHomeContext()
     const [sm, md, lg] = useBreakpoints()
     const colors = {
@@ -23,7 +23,7 @@ export default function ActionIcon({fn, Icon, color}) {
     const animations = {
         original: 'translate-x-2',
         new: 'md:translate-x-14 translate-x-12',
-        hover: 'hover:translate-x-0'
+        hover: '!translate-x-0'
     }
 
     useEffect(() => {
@@ -37,7 +37,7 @@ export default function ActionIcon({fn, Icon, color}) {
     }, [isLoggedIn])
 
     return (
-        <Button style = 'actionIcon' classNames = {(isLoggedIn ? '' : 'translate-x-[100%]') + ' w-min ' + animated + ' ' + (isLoggedIn ? animations.hover : '') + ' ' + colors[color]} onClick = {isLoggedIn ? () => fn() : () => {}}>
+        <Button style = 'actionIcon' classNames = {'action-icon ' + (isLoggedIn ? '' : 'translate-x-[100%]') + ' w-min ' + animated + ' ' + (isLoggedIn ? isHovered ? animations.hover : '' : '') + ' ' + colors[color]} onClick = {isLoggedIn ? () => fn() : () => {}}>
             <Icon size = {!sm ? 36 : 28}/>
         </Button>
     )

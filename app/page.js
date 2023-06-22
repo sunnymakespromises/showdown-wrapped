@@ -26,9 +26,9 @@ export default function Home() {
                         speed={80}
                     />
                 </Text>
-                <ActionBar/>
                 {body}
             </div>
+            <ActionBar/>
         </div>
     )
 }
